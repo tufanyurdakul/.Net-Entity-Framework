@@ -5,3 +5,7 @@ If you want to not use to middleware in program.cs you can delete code and you c
 If you want to not use Attribute for model you can delete.
 
 If you create table on database just define on databasecontext.cs like userdto and than run with nuget package console add-migration <migration-name> on  EntityFrameworkApi.Database  
+
+When api runs apply migration automatically in startup
+
+Change appSettings according to database connection 
