@@ -1,5 +1,6 @@
 using EntityFrameworkApi.Database;
 using EntityFrameworkApi.Model.Shared.Api;
+using EntityFrameworkApi.Utilities.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -57,20 +58,26 @@ var app = builder.Build();
 
 #region Auto Database Update
 
-//using (var serviceScope = app.Services.GetService<IServiceScopeFactory>()?.CreateScope())
-//{
-//    if (serviceScope != null)
-//    {
-//        DatabaseContext cont = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
-//        if (cont.Database.GetPendingMigrations().Count() > 0)
-//        {
-//            cont.Database.Migrate();
-//        }
-//    }
-//}
+using (var serviceScope = app.Services.GetService<IServiceScopeFactory>()?.CreateScope())
+{
+    if (serviceScope != null)
+    {
+        DatabaseContext cont = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
+        if (cont.Database.GetPendingMigrations().Count() > 0)
+        {
+            cont.Database.Migrate();
+        }
+    }
+}
 
 #endregion
 
+
+#region Middleware
+
+var middleware = app.UseMiddleware<ErrorHandler>();
+
+#endregion
 
 if (app.Environment.IsDevelopment())
 {
