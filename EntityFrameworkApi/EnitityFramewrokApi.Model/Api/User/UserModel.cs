@@ -46,4 +46,13 @@ namespace EntityFrameworkApi.Model.Api.User
         [RequiredParameterAttributes(0, 5)]
         public string Gender { get; set; }
     }
+
+    public class UserLoginModel
+    {
+        [RequiredParameterAttributes(3, 50)]
+        public string Name { get; set; }
+
+        [RequiredParameterAttributes(7, 15)]
+        public string Password { get; set; }
+    }
 }
