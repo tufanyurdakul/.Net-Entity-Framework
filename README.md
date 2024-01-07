@@ -9,3 +9,5 @@ If you create table on database just define on databasecontext.cs like userdto a
 When api runs apply migration automatically in startup
 
 Change appSettings according to database connection 
+
+- Basic Authorization & Login Added
