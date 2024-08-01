@@ -10,4 +10,4 @@ When api runs apply migration automatically in startup
 
 Change appSettings according to database connection 
 
-- Basic Authorization & Login Added
+- Bearer Token & Login Added
